@@ -40,9 +40,9 @@ const CodeBlock = styled.pre`
 
 const EndpointTable = () => {
   return (
-    <TableContainer>
-      <Table>
-        <thead>
+      <TableContainer>
+        <Table>
+          <thead>
           <tr>
             <Th>Method</Th>
             <Th>URL</Th>
@@ -50,8 +50,8 @@ const EndpointTable = () => {
             <Th>Response (JSON)</Th>
             <Th>Error</Th>
           </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
           {/* Pizza Endpoints */}
           <tr>
             <Td>GET</Td>
@@ -111,35 +111,35 @@ const EndpointTable = () => {
             <Td>All order lines for order</Td>
             <Td>404 not found</Td>
           </tr>
-        </tbody>
-      </Table>
+          </tbody>
+        </Table>
 
-      <div style={{ padding: '20px' }}>
-        <h3>REQUEST BODY AND RESPONSE FORMATS</h3>
-        <p>(1) User format (don't provide ID, for POST):</p>
-        <CodeBlock>
-{`{
+        <div style={{ padding: '20px' }}>
+          <h3>REQUEST BODY AND RESPONSE FORMATS</h3>
+          <p>(1) User format (don't provide ID, for POST):</p>
+          <CodeBlock>
+            {`{
   "id": Number,
   "age": Number,
   "name": String,
   "gender": String ("Male" | "Female" | "Other"),
   "email": String (email)
 }`}
-        </CodeBlock>
+          </CodeBlock>
 
-        <p>Pizza format:</p>
-        <CodeBlock>
-{`{
+          <p>Pizza format:</p>
+          <CodeBlock>
+            {`{
   "id": Number,
   "name": String,
   "toppings": String,
   "price": Number
 }`}
-        </CodeBlock>
+          </CodeBlock>
 
-        <p>Order format:</p>
-        <CodeBlock>
-{`{
+          <p>Order format:</p>
+          <CodeBlock>
+            {`{
   "order_id": Number,
   "order_date": String,
   "user_id": Number,
@@ -150,41 +150,41 @@ const EndpointTable = () => {
     }
   ]
 }`}
-        </CodeBlock>
+          </CodeBlock>
 
-        <p>OrderLine format:</p>
-        <CodeBlock>
-{`{
+          <p>OrderLine format:</p>
+          <CodeBlock>
+            {`{
   "order_line_id": Number,
   "pizza_id": Number,
   "quantity": Number,
   "pizza_price": Number
 }`}
-        </CodeBlock>
+          </CodeBlock>
 
-        <h3>ERRORS</h3>
-        <CodeBlock>
-{`{ "status": statusCode, "msg": "Explains the problem" }`}
-        </CodeBlock>
-        <p>Examples:</p>
-        <p>(e1):</p>
-        <CodeBlock>
-{`{ "status": 404, "msg": "No content found for this request" }`}
-        </CodeBlock>
-        <p>(e2):</p>
-        <CodeBlock>
-{`{ "status": 400, "msg": "Field 'xxx' is required" }`}
-        </CodeBlock>
-        <p>(e3):</p>
-        <CodeBlock>
-{`{ "status": 401, "msg": "No user is logged in" }`}
-        </CodeBlock>
-        <p>(e4):</p>
-        <CodeBlock>
-{`{ "status": 403, "msg": "Current user does not have access rights to this content" }`}
-        </CodeBlock>
-      </div>
-    </TableContainer>
+          <h3>ERRORS</h3>
+          <CodeBlock>
+            {`{ "status": statusCode, "msg": "Explains the problem" }`}
+          </CodeBlock>
+          <p>Examples:</p>
+          <p>(e1):</p>
+          <CodeBlock>
+            {`{ "status": 404, "msg": "No content found for this request" }`}
+          </CodeBlock>
+          <p>(e2):</p>
+          <CodeBlock>
+            {`{ "status": 400, "msg": "Field 'xxx' is required" }`}
+          </CodeBlock>
+          <p>(e3):</p>
+          <CodeBlock>
+            {`{ "status": 401, "msg": "No user is logged in" }`}
+          </CodeBlock>
+          <p>(e4):</p>
+          <CodeBlock>
+            {`{ "status": 403, "msg": "Current user does not have access rights to this content" }`}
+          </CodeBlock>
+        </div>
+      </TableContainer>
   );
 };
 

@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import Vision from './pages/Vision'
 import Endpoints from './pages/Endpoints'
 import GlobalStyles from './styles/GlobalStyles'
-
+ 
 function App() {
   return (
     <Router>

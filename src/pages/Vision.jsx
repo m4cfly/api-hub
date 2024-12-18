@@ -62,11 +62,11 @@ const Vision = () => {
             <Section>
                 <h2>Vores API</h2>
                 <p>
-                    <a href="https://pizza.jenjoelle.dk/api/routes" target="_blank">https://pizza.jenjoelle.dk/api/routes</a>
+                    <a href="https://api.pizzas.bytecode.dk/api/routes" target="_blank">https://api.pizzas.bytecode.dk/api/routes</a>
                 </p>
                 <h2>Vores GitHub Repository</h2>
                 <p>
-                    <a href="https://github.com/Jenjolen/Pizzeria_SP-2-project_25-10-2024" target="_blank">https://github.com/Jenjolen/Pizzeria_SP-2-project_25-10-2024</a>
+                    <a href="https://github.com/m4cfly/pizza-api-december15" target="_blank">https://github.com/m4cfly/pizza-api-december15</a>
                 </p>
                 <h2>Mockup til frontend</h2>
                 <Logo src="/pizza-mockup.png" />

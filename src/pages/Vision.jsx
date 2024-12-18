@@ -5,19 +5,13 @@ const VisionContainer = styled.div`
     margin: 0 auto;
     padding: 0 20px;
 
-    @media (max-width: 768px) {
-        padding: 0 15px;
-    }
 `
 const Logo = styled.img`
     max-width: 100%;
     height: auto;
     margin: 2rem 0;
 
-    @media (max-width: 768px) {
-        max-width: 200px;
-        margin: 1rem 0;
-    }
+
 `
 
 const Title = styled.h1`
@@ -25,10 +19,7 @@ const Title = styled.h1`
     margin-bottom: 2rem;
     text-align: center;
 
-    @media (max-width: 768px) {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-    }
+
 `
 
 const Section = styled.section`

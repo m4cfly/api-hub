@@ -19,7 +19,7 @@
   }
   
   .logo {
-    width: 500px;  /* Meget større logo */
+    max-width: 50%;  /* Meget større logo */
     height: auto;
     margin-bottom: 1.5rem;
   }

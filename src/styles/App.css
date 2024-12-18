@@ -1,10 +1,85 @@
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* src/styles/App.css */
+
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Default background */
+  color: #333; /* Default text color */
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+}
+
+/* App container - Center the app horizontally and vertically */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content at the top */
+  align-items: center; /* Center the content horizontally */
+  width: 100%;
+  max-width: 1200px; /* Max width for large screens */
+  margin: 0 auto; /* Center the content in the middle */
+  padding: 1rem;
+  min-height: 100vh; /* Ensure the app takes full height of the screen */
+}
+
+/* Header and Navbar */
+header, nav {
+  background-color: #333;
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Main content container */
 .main-content {
-  flex: 1;
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center; /* Center content horizontally */
+  justify-content: flex-start; /* Align items to the top */
+  padding: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .app {
+    padding: 0 2rem; /* Reduce padding on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust the layout for tablet screens */
+  .main-content {
+    padding: 1rem; /* Reduce padding on smaller screens */
+  }
+
+  .app {
+    padding: 0 1rem; /* Further reduce padding on small screens */
+  }
+
+  header, nav {
+    padding: 0.75rem 0; /* Reduce header and navbar padding */
+  }
+}
+
+@media (max-width: 480px) {
+  /* For very small screens */
+  .main-content {
+    padding: 0.5rem; /* Reduce padding */
+  }
+
+  header, nav {
+    padding: 0.5rem 0; /* Even more compact navbar */
+  }
 }

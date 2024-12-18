@@ -1,16 +1,16 @@
-const API_URL = 'http://localhost:YOUR_BACKEND_PORT'
+const API_URL = 'https://api.pizzas.bytecode.dk/api'
 
 export const api = {
   getPizzas: async () => {
-    const response = await fetch(`${API_URL}/pizzas`)
+    const response = await fetch(`${API_URL}/pizza-orders/mine`)
     if (!response.ok) {
-      throw new Error('Kunne ikke hente pizzaer')
+      throw new Error('Kunne ikke hente dine pizza ordrer')
     }
     return response.json()
   },
 
   createOrder: async (orderData) => {
-    const response = await fetch(`${API_URL}/orders`, {
+    const response = await fetch(`${API_URL}/pizza-orders`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ export const api = {
       body: JSON.stringify(orderData)
     })
     if (!response.ok) {
-      throw new Error('Kunne ikke oprette ordre')
+      throw new Error('Kunne ikke oprette Pizza Ordre')
     }
     return response.json()
   },

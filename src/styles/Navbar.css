@@ -1,46 +1,72 @@
 /* src/styles/Navbar.css */
 .navbar {
-    background-color: #4CAF50;
-    padding: 1rem 0;
-    width: 100%;
-  }
-  
+  background-color: #4CAF50;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensures proper vertical alignment */
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-left a, .nav-right a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
   .nav-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
+    padding: 0 1rem; /* Reduce padding on medium screens */
   }
-  
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+    align-items: center; /* Center the content vertically */
+    gap: 1rem;
+    padding: 0 1rem; /* Reduce padding on small screens */
+  }
+
   .nav-left, .nav-right {
-    display: flex;
-    gap: 2rem;
+    width: 100%; /* Make left and right content stretch */
+    justify-content: center; /* Center the links horizontally */
+    gap: 1rem; /* Adjust gap between links */
   }
-  
+
   .nav-left a, .nav-right a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    font-size: 1rem; /* Slightly smaller text on mobile */
+    padding: 0.5rem; /* Reduce padding for mobile screens */
   }
-  
-  .nav-left a:hover, .nav-right a:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    text-decoration: underline;
+
+  /* Optional: Make the navbar more compact on mobile */
+  .navbar {
+    padding: 0.75rem 0; /* Slightly smaller padding for mobile */
   }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .nav-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .nav-left, .nav-right {
-      gap: 1rem;
-    }
+}
+
+@media (max-width: 480px) {
+  .nav-left a, .nav-right a {
+    font-size: 0.9rem; /* Make the text even smaller on very small devices */
   }
+}

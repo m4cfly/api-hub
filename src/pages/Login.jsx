@@ -13,7 +13,7 @@ function Login() {
     setError('')
     
     try {
-      const response = await fetch('http://localhost:YOUR_PORT/login', {
+      const response = await fetch('https://api.pizzas.bytecode.dk/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

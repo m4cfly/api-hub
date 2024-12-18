@@ -1,4 +1,4 @@
-// src/pages/Menu.jsx
+import React from 'react';
 import '../styles/Menu.css'
 
 function Menu() {
@@ -23,22 +23,24 @@ function Menu() {
       ingredients: 'Tomato sauce, Mozzarella, Gorgonzola, Parmesan, Ricotta',
       price: 110
     }
-  ]
+  ];
 
   return (
     <div className="menu-page">
-      <h2>Our Pizza Menu</h2>
-      <div className="menu-grid">
-        {pizzaMenu.map((pizza, index) => (
-          <div key={index} className="menu-item">
-            <h3>{pizza.name}</h3>
-            <p className="ingredients">{pizza.ingredients}</p>
-            <p className="price">{pizza.price} kr</p>
-          </div>
-        ))}
-      </div>
+      <section>
+        <h2>Our Pizza Menu</h2>
+        <div className="menu-grid">
+          {pizzaMenu.map((pizza, index) => (
+            <article key={index} className="menu-item">
+              <h3>{pizza.name}</h3>
+              <p className="ingredients">{pizza.ingredients}</p>
+              <p className="price">{pizza.price} kr</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
-  )
+  );
 }
 
-export default Menu
+export default Menu;

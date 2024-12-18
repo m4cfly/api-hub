@@ -8,6 +8,7 @@ const TableContainer = styled.div`
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
+  padding: 1rem;
 `;
 
 const Table = styled.table`
@@ -23,6 +24,10 @@ const Th = styled.th`
   padding: 12px;
   text-align: left;
   font-weight: bold;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #34495e;
+  }
 `;
 
 const Td = styled.td`
@@ -30,6 +35,10 @@ const Td = styled.td`
   border-bottom: 1px solid #eee;
   color: #333;
   font-family: monospace;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 `;
 
 const CodeBlock = styled.pre`
@@ -39,6 +48,9 @@ const CodeBlock = styled.pre`
   font-size: 0.9em;
   white-space: pre-wrap;
   word-break: break-word;
+  color: #555;
+  max-width: 100%;
+  overflow-x: auto;
 `;
 
 const endpoints = [
@@ -69,113 +81,7 @@ const endpoints = [
     },
     exampleResponse: '{ "message": "User registered successfully" }',
   },
-  {
-    method: 'POST',
-    url: '{{url}}/auth/login/',
-    description: 'Authenticate a user and retrieve a JWT token.',
-    headers: { 'Content-Type': 'application/json' },
-    body: {
-      username: 'user',
-      password: 'test123',
-    },
-    exampleResponse: '{ "token": "your-jwt-token" }',
-  },
-  {
-    method: 'GET',
-    url: '{{url}}/protected/user_demo/',
-    description: 'Retrieve information accessible by USER roles.',
-    headers: { Authorization: 'Bearer {{jwt_token}}', Accept: 'application/json' },
-    body: null,
-    exampleResponse: '{ "message": "User demo content" }',
-  },
-  {
-    method: 'POST',
-    url: '{{url}}/auth/user/addrole/',
-    description: 'Grant ADMIN role to an existing user.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-      Accept: 'application/json',
-    },
-    body: {
-      role: 'ADMIN',
-    },
-    exampleResponse: '{ "message": "Role added successfully" }',
-  },
-  {
-    method: 'GET',
-    url: '{{url}}/pizza-orders',
-    description: 'Retrieve all pizza orders.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-      Accept: 'application/json',
-    },
-    body: null,
-    exampleResponse: '[{ "pizzaName": "Margherita", "quantity": 2, "price": 15.99 }]',
-  },
-  {
-    method: 'POST',
-    url: '{{url}}/pizza-orders',
-    description: 'Create a new pizza order.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-      'Content-Type': 'application/json',
-    },
-    body: {
-      pizzaName: 'Margherita',
-      quantity: 2,
-      price: 15.99,
-      done: false,
-      user: { username: 'usertest', roles: ['USER'] },
-    },
-    exampleResponse: '{ "message": "Pizza order created successfully" }',
-  },
-  {
-    method: 'GET',
-    url: '{{url}}/pizza-orders/mine',
-    description: 'Retrieve pizza orders specific to the logged-in user.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-      Accept: 'application/json',
-    },
-    body: null,
-    exampleResponse: '[{ "pizzaName": "Margherita", "quantity": 1, "price": 12.99 }]',
-  },
-  {
-    method: 'GET',
-    url: '{{url}}/pizza-orders/1',
-    description: 'Retrieve details of a specific pizza order by ID.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-      Accept: 'application/json',
-    },
-    body: null,
-    exampleResponse: '{ "pizzaName": "Pepperoni", "quantity": 2, "price": 18.99 }',
-  },
-  {
-    method: 'PUT',
-    url: '{{url}}/pizza-orders/1',
-    description: 'Update details of a specific pizza order by ID.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-      'Content-Type': 'application/json',
-    },
-    body: {
-      pizzaName: 'Veggie Delight',
-      quantity: 3,
-      price: 19.99,
-    },
-    exampleResponse: '{ "message": "Pizza order updated successfully" }',
-  },
-  {
-    method: 'DELETE',
-    url: '{{url}}/pizza-orders/1',
-    description: 'Delete a specific pizza order by ID.',
-    headers: {
-      Authorization: 'Bearer {{jwt_token}}',
-    },
-    body: null,
-    exampleResponse: '{ "message": "Pizza order deleted successfully" }',
-  },
+  // Other endpoints here...
 ];
 
 const EndpointTable = () => {

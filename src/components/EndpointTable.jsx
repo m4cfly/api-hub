@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const TableContainer = styled.div`
@@ -38,153 +39,91 @@ const CodeBlock = styled.pre`
   font-size: 0.9em;
 `;
 
+const endpoints = [
+  {
+    method: 'GET',
+    url: '{{url}}/auth/test/',
+    description: 'A simple GET request to the test endpoint. No need for login.',
+    body: null,
+    response: null,
+    error: null,
+  },
+  {
+    method: 'POST',
+    url: '{{url}}/pizza-orders/populate/',
+    description: 'Populate the database with pizza orders for testing purposes.',
+    body: null,
+    response: 'Populated pizza data',
+    error: null,
+  },
+  {
+    method: 'POST',
+    url: '{{url}}/auth/register/',
+    description: 'Create a new user with a USER role by default.',
+    body: `{ "username": "user", "password": "test123" }`,
+    response: 'User created successfully',
+    error: '{ "status": 400, "msg": "Validation error" }',
+  },
+  {
+    method: 'POST',
+    url: '{{url}}/auth/login/',
+    description: 'Authenticate a user and retrieve a JWT token.',
+    body: `{ "username": "user", "password": "test123" }`,
+    response: `{ "token": "your-jwt-token" }`,
+    error: '{ "status": 401, "msg": "Invalid credentials" }',
+  },
+  {
+    method: 'GET',
+    url: '{{url}}/protected/user_demo/',
+    description: 'Retrieve information accessible by USER roles.',
+    body: null,
+    response: 'User demo data',
+    error: '{ "status": 403, "msg": "Unauthorized access" }',
+  },
+  {
+    method: 'POST',
+    url: '{{url}}/auth/user/addrole/',
+    description: 'Grant ADMIN role to an existing user.',
+    body: `{ "role": "ADMIN" }`,
+    response: 'Role added successfully',
+    error: '{ "status": 400, "msg": "Invalid role specified" }',
+  },
+];
+
 const EndpointTable = () => {
   return (
-      <TableContainer>
-        <Table>
-          <thead>
+    <TableContainer>
+      <Table>
+        <thead>
           <tr>
             <Th>Method</Th>
             <Th>URL</Th>
-            <Th>Request Body (JSON)</Th>
-            <Th>Response (JSON)</Th>
+            <Th>Description</Th>
+            <Th>Request Body</Th>
+            <Th>Response</Th>
             <Th>Error</Th>
           </tr>
-          </thead>
-          <tbody>
-          {/* Pizza Endpoints */}
-          <tr>
-            <Td>GET</Td>
-            <Td>/api/pizzas/populate</Td>
-            <Td>-</Td>
-            <Td>Populated pizza data</Td>
-            <Td>-</Td>
-          </tr>
-          <tr>
-            <Td>POST</Td>
-            <Td>/api/pizzas/multiple</Td>
-            <Td>[pizza1, pizza2, ...]</Td>
-            <Td>Array of created pizzas</Td>
-            <Td>400 bad request</Td>
-          </tr>
-
-          {/* OrderLine Endpoints */}
-          <tr>
-            <Td>POST</Td>
-            <Td>/api/orders/{'{id}'}/orderline</Td>
-            <Td>{`{ "pizza_id": Number, "quantity": Number }`}</Td>
-            <Td>Added order line</Td>
-            <Td>400 bad request</Td>
-          </tr>
-          <tr>
-            <Td>PUT</Td>
-            <Td>/api/orders/orderline/{'{id}'}</Td>
-            <Td>{`{ "pizza_id": Number, "quantity": Number }`}</Td>
-            <Td>Updated order line</Td>
-            <Td>404 not found</Td>
-          </tr>
-          <tr>
-            <Td>DELETE</Td>
-            <Td>/api/orders/orderline/{'{id}'}</Td>
-            <Td>-</Td>
-            <Td>Order line deleted</Td>
-            <Td>404 not found</Td>
-          </tr>
-          <tr>
-            <Td>GET</Td>
-            <Td>/api/orders/orderline/{'{id}'}</Td>
-            <Td>-</Td>
-            <Td>Order line details</Td>
-            <Td>404 not found</Td>
-          </tr>
-          <tr>
-            <Td>GET</Td>
-            <Td>/api/orders/orderline</Td>
-            <Td>-</Td>
-            <Td>All order lines</Td>
-            <Td>-</Td>
-          </tr>
-          <tr>
-            <Td>GET</Td>
-            <Td>/api/orders/{'{id}'}/orderline</Td>
-            <Td>-</Td>
-            <Td>All order lines for order</Td>
-            <Td>404 not found</Td>
-          </tr>
-          </tbody>
-        </Table>
-
-        <div style={{ padding: '20px' }}>
-          <h3>REQUEST BODY AND RESPONSE FORMATS</h3>
-          <p>(1) User format (don't provide ID, for POST):</p>
-          <CodeBlock>
-            {`{
-  "id": Number,
-  "age": Number,
-  "name": String,
-  "gender": String ("Male" | "Female" | "Other"),
-  "email": String (email)
-}`}
-          </CodeBlock>
-
-          <p>Pizza format:</p>
-          <CodeBlock>
-            {`{
-  "id": Number,
-  "name": String,
-  "toppings": String,
-  "price": Number
-}`}
-          </CodeBlock>
-
-          <p>Order format:</p>
-          <CodeBlock>
-            {`{
-  "order_id": Number,
-  "order_date": String,
-  "user_id": Number,
-  "order_item_list": [
-    {
-      "pizza_id": Number,
-      "quantity": Number
-    }
-  ]
-}`}
-          </CodeBlock>
-
-          <p>OrderLine format:</p>
-          <CodeBlock>
-            {`{
-  "order_line_id": Number,
-  "pizza_id": Number,
-  "quantity": Number,
-  "pizza_price": Number
-}`}
-          </CodeBlock>
-
-          <h3>ERRORS</h3>
-          <CodeBlock>
-            {`{ "status": statusCode, "msg": "Explains the problem" }`}
-          </CodeBlock>
-          <p>Examples:</p>
-          <p>(e1):</p>
-          <CodeBlock>
-            {`{ "status": 404, "msg": "No content found for this request" }`}
-          </CodeBlock>
-          <p>(e2):</p>
-          <CodeBlock>
-            {`{ "status": 400, "msg": "Field 'xxx' is required" }`}
-          </CodeBlock>
-          <p>(e3):</p>
-          <CodeBlock>
-            {`{ "status": 401, "msg": "No user is logged in" }`}
-          </CodeBlock>
-          <p>(e4):</p>
-          <CodeBlock>
-            {`{ "status": 403, "msg": "Current user does not have access rights to this content" }`}
-          </CodeBlock>
-        </div>
-      </TableContainer>
+        </thead>
+        <tbody>
+          {endpoints.map((endpoint, index) => (
+            <tr key={index}>
+              <Td>{endpoint.method}</Td>
+              <Td>{endpoint.url}</Td>
+              <Td>{endpoint.description}</Td>
+              <Td>
+                {endpoint.body ? <CodeBlock>{endpoint.body}</CodeBlock> : '-'}
+              </Td>
+              <Td>
+                {endpoint.response ? <CodeBlock>{endpoint.response}</CodeBlock> : '-'}
+              </Td>
+              <Td>
+                {endpoint.error ? <CodeBlock>{endpoint.error}</CodeBlock> : '-'}
+              </Td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </TableContainer>
   );
 };
 
